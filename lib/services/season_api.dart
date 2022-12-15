@@ -6,7 +6,8 @@ import 'package:webstartest/services/models/season_dto.dart';
 
 class SeasonAPI extends BaseApiProvider {
   Future<SeasonDTO?> getSeasons() async {
-    var responseString = await super.get('seasons.json');
+    //TODO: limit
+    var responseString = await super.get('seasons.json?limit=74&offset=0');
 
     if (responseString == null) {
       return null;

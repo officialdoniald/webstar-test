@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../language_constants.dart';
-import '../main.dart';
-import '../services/models/season_dto.dart';
-import '../services/season_api.dart';
+import 'package:webstartest/screens/seasons/seasons_list_view_item.dart';
+import '../../language_constants.dart';
+import '../../main.dart';
+import '../../services/models/season_dto.dart';
+import '../../services/season_api.dart';
 
 class SeasonsScreen extends StatefulWidget {
   const SeasonsScreen({super.key});
@@ -33,8 +34,19 @@ class _SeasonsScreenState extends State<SeasonsScreen> {
           future: seasonDTO,
           builder: (BuildContext context, AsyncSnapshot<SeasonDTO?> snapshot) {
             if (snapshot.hasData) {
-              if (snapshot.data != null && snapshot.data!.mRData != null) {
-                return const Text("Találtunk!");
+              if (snapshot.data != null &&
+                  snapshot.data!.mRData != null &&
+                  snapshot.data!.mRData!.seasonTable != null &&
+                  snapshot.data!.mRData!.seasonTable!.seasons != null) {
+                return ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount:
+                        snapshot.data!.mRData!.seasonTable!.seasons!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return SeasonsListViewItem(
+                          model: snapshot
+                              .data!.mRData!.seasonTable!.seasons![index]);
+                    });
               } else {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.center,

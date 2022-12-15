@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:webstartest/screens/seasons_screen.dart';
+import 'package:webstartest/screens/seasons/seasons_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:webstartest/services/season_api.dart';
 import 'app_localizations.dart';
