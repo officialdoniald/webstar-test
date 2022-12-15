@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:webstartest/screens/seasons_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
+import 'package:webstartest/services/season_api.dart';
 import 'app_localizations.dart';
 import 'language_constants.dart';
+import 'package:get_it/get_it.dart';
+
+GetIt getIt = GetIt.instance;
+
+void _setupServiceLocator() {
+  getIt.registerSingleton<SeasonAPI>(SeasonAPI());
+}
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  _setupServiceLocator();
+
   runApp(const MyApp());
 }
 
