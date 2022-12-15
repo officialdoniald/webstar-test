@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webstartest/screens/seasons/seasons_list_view_item.dart';
+import 'package:webstartest/widgets/app_bar_with_title.dart';
 import '../../language_constants.dart';
 import '../../main.dart';
 import '../../services/models/season_dto.dart';
@@ -29,6 +30,9 @@ class _SeasonsScreenState extends State<SeasonsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBarWithTitle(
+        title: getTranslated(context, "seasons_screen_seasons"),
+      ),
       body: SafeArea(
         child: FutureBuilder<SeasonDTO?>(
           future: seasonDTO,
@@ -39,14 +43,15 @@ class _SeasonsScreenState extends State<SeasonsScreen> {
                   snapshot.data!.mRData!.seasonTable != null &&
                   snapshot.data!.mRData!.seasonTable!.seasons != null) {
                 return ListView.builder(
-                    padding: const EdgeInsets.all(8),
-                    itemCount:
-                        snapshot.data!.mRData!.seasonTable!.seasons!.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return SeasonsListViewItem(
-                          model: snapshot
-                              .data!.mRData!.seasonTable!.seasons![index]);
-                    });
+                  padding: const EdgeInsets.all(8),
+                  itemCount:
+                      snapshot.data!.mRData!.seasonTable!.seasons!.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return SeasonsListViewItem(
+                        model: snapshot
+                            .data!.mRData!.seasonTable!.seasons![index]);
+                  },
+                );
               } else {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
