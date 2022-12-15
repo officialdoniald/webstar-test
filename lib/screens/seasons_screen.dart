@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../language_constants.dart';
 
 class SeasonsScreen extends StatefulWidget {
   const SeasonsScreen({super.key});
@@ -10,6 +11,10 @@ class SeasonsScreen extends StatefulWidget {
 class _SeasonsScreenState extends State<SeasonsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Text(
+        getTranslated(context, 'common_ok'),
+      ),
+    );
   }
 }
