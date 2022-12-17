@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../services/models/season_dto.dart';
 
 class SeasonsListViewItem extends StatelessWidget {
@@ -10,8 +11,14 @@ class SeasonsListViewItem extends StatelessWidget {
     required this.model,
   });
 
-  _infoClicked() {
-    //TODO: nav to season table
+  _infoClicked() async {
+    if (model.url == null) {
+      return;
+    }
+
+    if (await canLaunchUrl(Uri.parse(model.url!))) {
+      await launchUrl(Uri.parse(model.url!));
+    }
   }
 
   @override
