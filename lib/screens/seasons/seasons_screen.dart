@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:webstartest/screens/seasons/seasons_list_view_item.dart';
-import 'package:webstartest/widgets/app_bar_with_title.dart';
 import '../../language_constants.dart';
 import '../../main.dart';
 import '../../services/models/season_dto.dart';
@@ -30,8 +29,19 @@ class _SeasonsScreenState extends State<SeasonsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarWithTitle(
-        title: getTranslated(context, "seasons_screen_seasons"),
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: false,
+        backgroundColor: Colors.white,
+        title: Text(
+          getTranslated(context, "seasons_screen_seasons"),
+          style: const TextStyle(
+            fontSize: 35,
+            fontWeight: FontWeight.w700,
+            color: Colors.black,
+          ),
+          textAlign: TextAlign.start,
+        ),
       ),
       body: SafeArea(
         child: FutureBuilder<SeasonDTO?>(
@@ -48,8 +58,10 @@ class _SeasonsScreenState extends State<SeasonsScreen> {
                       snapshot.data!.mRData!.seasonTable!.seasons!.length,
                   itemBuilder: (BuildContext context, int index) {
                     return SeasonsListViewItem(
-                        model: snapshot
-                            .data!.mRData!.seasonTable!.seasons![index]);
+                      model:
+                          snapshot.data!.mRData!.seasonTable!.seasons![index],
+                      context: context,
+                    );
                   },
                 );
               } else {
