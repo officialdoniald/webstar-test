@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webstartest/services/models/driver_dto.dart';
 
+import '../drivers/driver_screen.dart';
+
 class FieldListViewItem extends StatelessWidget {
   Drivers model;
   BuildContext context;
@@ -25,17 +27,18 @@ class FieldListViewItem extends StatelessWidget {
   }
 
   _navToFieldsScreen() {
-    /*Navigator.push(
+    Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => FieldsScreen(season: model.season),
+        builder: (context) => DriverScreen(driver: model),
       ),
-    );*/
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: _navToFieldsScreen,
       child: Container(
         padding: const EdgeInsets.all(10),
         child: Row(
