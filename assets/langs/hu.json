@@ -4,5 +4,6 @@
     "fields_screen_seasons": "Mezők",
     "driver_birth": "Születési idő: ",
     "driver_permanentNumber": "Lefoglalt rajtszám: ",
-    "driver_nacionality": "Nemzetiség: "
+    "driver_nacionality": "Nemzetiség: ",
+    "fields_screen_nationalities": "Nemzetiségek"
 }
