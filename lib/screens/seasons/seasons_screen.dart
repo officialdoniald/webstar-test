@@ -86,7 +86,7 @@ class _SeasonsScreenState extends State<SeasonsScreen> {
             } else {
               return const Center(
                 child: CircularProgressIndicator(
-                  color: Colors.green,
+                  color: Colors.black,
                 ),
               );
             }

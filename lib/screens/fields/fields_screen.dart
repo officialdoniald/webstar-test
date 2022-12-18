@@ -173,7 +173,7 @@ class _FieldsScreenState extends State<FieldsScreen> {
           } else {
             return const Center(
               child: CircularProgressIndicator(
-                color: Colors.green,
+                color: Colors.black,
               ),
             );
           }
