@@ -46,7 +46,7 @@ class DriverScreen extends StatelessWidget {
         ),
         leadingWidth: 40,
         title: Text(
-          model.code ?? "-",
+          model.code ?? model.familyName ?? model.givenName ?? "-",
           style: const TextStyle(
             fontSize: 35,
             fontWeight: FontWeight.w700,
@@ -54,8 +54,101 @@ class DriverScreen extends StatelessWidget {
           ),
           textAlign: TextAlign.start,
         ),
+        actions: [
+          GestureDetector(
+            onTap: _infoClicked,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: SvgPicture.asset('assets/images/info.svg'),
+            ),
+          ),
+        ],
       ),
-      body: Container(),
+      body: Container(
+        padding: const EdgeInsets.all(20),
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "${model.givenName!} ${model.familyName!}",
+              style: const TextStyle(
+                fontSize: 35,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  getTranslated(context, "driver_nacionality"),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Text(
+                  " ${model.nationality}",
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  getTranslated(context, "driver_birth"),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Text(
+                  "${model.dateOfBirth}",
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  getTranslated(context, "driver_permanentNumber"),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Text(
+                  model.permanentNumber ?? "-",
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

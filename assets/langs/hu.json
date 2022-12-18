@@ -2,6 +2,7 @@
     "seasons_screen_no_season_found": "Nem találtunk szezont!",
     "seasons_screen_seasons": "Szezonok",
     "fields_screen_seasons": "Mezők",
-    "driver_birth": "Születési idő (yyyy-MM-dd): ",
-    "driver_permanentNumber": "Lefoglalt rajtszám: "
+    "driver_birth": "Születési idő: ",
+    "driver_permanentNumber": "Lefoglalt rajtszám: ",
+    "driver_nacionality": "Nemzetiség: "
 }
