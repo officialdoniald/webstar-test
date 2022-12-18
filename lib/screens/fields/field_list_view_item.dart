@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:webstartest/language_constants.dart';
 import 'package:webstartest/services/models/driver_dto.dart';
-
 import '../drivers/driver_screen.dart';
 
 class FieldListViewItem extends StatelessWidget {
@@ -30,7 +30,10 @@ class FieldListViewItem extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => DriverScreen(driver: model),
+        builder: (context) => DriverScreen(
+          model: model,
+          context: context,
+        ),
       ),
     );
   }
@@ -40,19 +43,79 @@ class FieldListViewItem extends StatelessWidget {
     return GestureDetector(
       onTap: _navToFieldsScreen,
       child: Container(
-        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black,
+          ),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+        padding: const EdgeInsets.all(20),
+        margin: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  model.familyName ?? "-",
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "${model.givenName!} ${model.familyName!}",
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      " (${model.nationality})",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      getTranslated(context, "driver_birth"),
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      model.dateOfBirth!,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      getTranslated(context, "driver_permanentNumber"),
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Text(
+                      model.permanentNumber ?? "-",
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

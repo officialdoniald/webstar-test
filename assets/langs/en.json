@@ -1,5 +1,7 @@
 {
     "seasons_screen_no_season_found": "Season not found!",
     "seasons_screen_seasons": "Seasons",
-    "fields_screen_seasons": "Fields"
+    "fields_screen_seasons": "Fields",
+    "driver_birth": "Date of birth (yyyy-MM-dd): ",
+    "driver_permanentNumber": "Permanent number: "
 }

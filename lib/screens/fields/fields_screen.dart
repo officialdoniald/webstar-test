@@ -19,14 +19,14 @@ class FieldsScreen extends StatefulWidget {
 }
 
 class _FieldsScreenState extends State<FieldsScreen> {
-  _back() {
-    Navigator.pop(context);
-  }
-
   late Future<DriverDTO?> fieldDTO;
 
   Future<DriverDTO?> _init() async {
     return getIt<SeasonAPI>().getFields(widget.season!);
+  }
+
+  _back() {
+    Navigator.pop(context);
   }
 
   @override
@@ -54,7 +54,7 @@ class _FieldsScreenState extends State<FieldsScreen> {
         ),
         leadingWidth: 40,
         title: Text(
-          getTranslated(context, "fields_screen_seasons"),
+          widget.season!,
           style: const TextStyle(
             fontSize: 35,
             fontWeight: FontWeight.w700,
