@@ -5,5 +5,6 @@
     "driver_birth": "Date of birth: ",
     "driver_permanentNumber": "Permanent number: ",
     "driver_nacionality": "Nationality: ",
-    "fields_screen_nationalities": "Nationalities"
+    "fields_screen_nationalities": "Nationalities",
+    "fields_screen_no_field_found": "Field not found!"
 }

@@ -65,22 +65,15 @@ class _SeasonsScreenState extends State<SeasonsScreen> {
                   },
                 );
               } else {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const SizedBox(
-                      height: 50,
+                return Center(
+                  child: Text(
+                    getTranslated(context, 'seasons_screen_no_season_found'),
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w700,
                     ),
-                    Text(
-                      getTranslated(context, 'seasons_screen_no_season_found'),
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ],
+                  ),
                 );
               }
             } else {

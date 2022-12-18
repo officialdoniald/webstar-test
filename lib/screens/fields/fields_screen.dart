@@ -126,7 +126,8 @@ class _FieldsScreenState extends State<FieldsScreen> {
             if (snapshot.data != null &&
                 snapshot.data!.mRData != null &&
                 snapshot.data!.mRData!.driverTable != null &&
-                snapshot.data!.mRData!.driverTable!.drivers != null) {
+                snapshot.data!.mRData!.driverTable!.drivers != null &&
+                snapshot.data!.mRData!.driverTable!.drivers!.isNotEmpty) {
               return SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -152,22 +153,15 @@ class _FieldsScreenState extends State<FieldsScreen> {
                 ),
               );
             } else {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const SizedBox(
-                    height: 50,
+              return Center(
+                child: Text(
+                  getTranslated(context, 'fields_screen_no_field_found'),
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w700,
                   ),
-                  Text(
-                    getTranslated(context, 'seasons_screen_no_season_found'),
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
+                ),
               );
             }
           } else {
